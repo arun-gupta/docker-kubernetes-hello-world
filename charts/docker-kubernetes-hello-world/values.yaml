@@ -3,8 +3,8 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: draft
-  tag: dev
+  repository: 100.65.25.48:5000/jenkinsx/docker-kubernetes-hello-world
+  tag: 0.1.2
   pullPolicy: IfNotPresent
 service:
   name: docker-kubernetes-hello-world
