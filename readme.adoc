@@ -1,0 +1,50 @@
+= Hello World with Docker and Kubernetes
+
+== Build Docker Image
+
+```
+docker image build . -t arungupta/nginx-hello-world
+```
+
+== Push Docker Image
+
+```
+docker image push arungupta/nginx-hello-world
+```
+
+== Run Docker Container
+
+```
+docker container run -d --name nginx-hello-world -p 80:80 arungupta/nginx-hello-world
+```
+
+Access the application:
+
+```
+curl http://localhost
+```
+
+Terminate the container:
+
+```
+docker container rm -f nginx-hello-world
+```
+
+== Run Kubernetes Deployment
+
+```
+kubectl apply -f deployment.yaml
+```
+
+Access the application:
+
+```
+curl http://`kubectl get svc nginx-hello-world-service -o jsonpath={.status.loadBalancer.ingress[0].hostname}`
+```
+
+Delete the Deployment:
+
+```
+kubectl delete -f deployment.yaml
+```
+
