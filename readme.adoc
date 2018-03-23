@@ -24,10 +24,16 @@ curl http://localhost:8080
 
 == Docker
 
-=== Build Docker Image
+=== Build Application
 
 ```
 mvn clean package
+```
+
+=== Build Docker Image
+
+```
+docker image build -t arungupta/helloworld-spring-boot:latest .
 ```
 
 === Push Docker Image
