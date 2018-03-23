@@ -1,0 +1,5 @@
++ make tag
+sed -i -e "s/version:.*/version: 0.1.1/" Chart.yaml
+sed -i -e "s/repository: .*/repository: 100.65.25.48:5000\/jenkinsx\/docker-kubernetes-hello-world/" values.yaml
+sed -i -e "s/tag: .*/tag: 0.1.1/" values.yaml
+git add --all
