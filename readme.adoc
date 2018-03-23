@@ -1,48 +1,74 @@
 = Hello World with Docker and Kubernetes
 
-== Build Docker Image
+This repo consists of a Spring Boot Hello World application. It shows:
+
+. Run & test the application from CLI
+. Create a Docker image, run the container and test it
+. Create Kubernetes deployment and test it
+
+Let's get started!
+
+== CLI
+
+=== Run App
 
 ```
-docker image build . -t arungupta/nginx-hello-world
+mvn spring-boot:run
 ```
 
-== Push Docker Image
+=== Test Application
 
 ```
-docker image push arungupta/nginx-hello-world
+curl http://localhost:8080
 ```
 
-== Run Docker Container
+== Docker
+
+=== Build Docker Image
 
 ```
-docker container run -d --name nginx-hello-world -p 80:80 arungupta/nginx-hello-world
+mvn clean package
 ```
 
-Access the application:
+=== Push Docker Image
 
 ```
-curl http://localhost
+docker image push arungupta/helloworld-spring-boot:latest
 ```
 
-Terminate the container:
+=== Run Docker Container
 
 ```
-docker container rm -f nginx-hello-world
+docker container run -d --name hello-world -p 8080:8080 arungupta/helloworld-spring-boot:latest
 ```
 
-== Run Kubernetes Deployment
+=== Test Application
+
+```
+curl http://localhost:8080
+```
+
+=== Delete Docker Container
+
+```
+docker container rm -f hello-world
+```
+
+== Kubernetes
+
+=== Create Deployment
 
 ```
 kubectl apply -f deployment.yaml
 ```
 
-Access the application:
+=== Test Application
 
 ```
-curl http://`kubectl get svc nginx-hello-world-service -o jsonpath={.status.loadBalancer.ingress[0].hostname}`
+curl http://`kubectl get svc hello-world-service -o jsonpath={.status.loadBalancer.ingress[0].hostname}`
 ```
 
-Delete the Deployment:
+=== Delete Deployment
 
 ```
 kubectl delete -f deployment.yaml
