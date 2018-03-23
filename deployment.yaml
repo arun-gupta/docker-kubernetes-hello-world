@@ -1,17 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: nginx-hello-world
+  name: hello-world
 spec:
   replicas: 1 
   template:
     metadata:
       labels:
-        app: nginx-hello-world
+        app: hello-world
     spec:
       containers:
-      - name: nginx-pod
-        image: arungupta/nginx-hello-world
+      - name: hello-world-pod
+        image: arungupta/helloworld-spring-boot:latest
         ports: 
         - containerPort: 80
         - containerPort: 443
@@ -19,13 +19,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-hello-world-service
+  name: hello-world-service
 spec:
   selector:
-    app: nginx-hello-world
+    app: hello-world
   ports:
   - name: http
     protocol: TCP
     port: 80
-    targetPort: 80
+    targetPort: 8080
   type: LoadBalancer
