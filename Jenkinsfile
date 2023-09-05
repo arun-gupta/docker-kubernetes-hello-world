@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('stage1') {
       steps {
-        echo 'This is buid number ${BUILD_NUMBER} of Hello-world-with-Docker-Kubernetes ${Hello}'
-        sh 'echo "This is buid number ${BUILD_NUMBER} of Hello-world-with-Docker-Kubernetes ${Hello}"'
+        echo 'This is build number ${BUILD_NUMBER} of Hello-world-with-Docker-Kubernetes ${Hello}'
+        sh 'echo "This is build number ${BUILD_NUMBER} of Hello-world-with-Docker-Kubernetes ${Hello}"'
       }
     }
 
